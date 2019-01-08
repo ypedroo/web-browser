@@ -24,7 +24,22 @@ namespace webBrowser
 
         private void button1_Click(object sender, EventArgs e)
         {
+            richTextBox1.AppendText("A button was clicker \r\n");
+        }
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            richTextBox1.AppendText("Entrou mermao \r\n");
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            richTextBox1.AppendText("Saiu mermao \r\n");
         }
     }
 }
