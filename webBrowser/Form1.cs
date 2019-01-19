@@ -42,6 +42,7 @@ namespace webBrowser
         {
             NavigateBtn.Enabled = true;
             textBox1.Enabled = true;
+            toolStripStatusLabel2.Text = "Navigation Complete";
         }
 
         //This is a core function that will perform all navigation and post processing
@@ -49,6 +50,7 @@ namespace webBrowser
         {
             NavigateBtn.Enabled = false;
             textBox1.Enabled = false;
+            toolStripStatusLabel2.Text = "Navigation has started";
             webBrowser1.Navigate(textBox1.Text);
         }
 
