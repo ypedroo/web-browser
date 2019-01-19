@@ -40,31 +40,50 @@ namespace webBrowser
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-
+            NavigateBtn.Enabled = true;
+            textBox1.Enabled = true;
         }
 
         //This is a core function that will perform all navigation and post processing
         private void NavigateToPage()
         {
+            NavigateBtn.Enabled = false;
+            textBox1.Enabled = false;
             webBrowser1.Navigate(textBox1.Text);
         }
 
         //Onclick will show the textbox
-        private void Navigate_Click(object sender, EventArgs e)
+        private void NavigateBtn_Click(object sender, EventArgs e)
         {
             NavigateToPage();
         }
-               
+
 
         //this func is activated when the button is clicked
-        private void Navigate_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)ConsoleKey.Enter )
+            if (e.KeyChar == (char)ConsoleKey.Enter)
             {
                 //NavigateToPage();
-                Navigate_Click(null, null);
+                NavigateBtn_Click(null, null);
             }
         }
+
+        private void toolStripProgressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void webBrowser1_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            if (e.CurrentProgress > 0 && e.MaximumProgress > 0)
+            {
+                toolStripProgressBar1.ProgressBar.Value = (int)(e.CurrentProgress * 100 / e.MaximumProgress);
+
+            }
+
+        }
     }
+
 }
 
